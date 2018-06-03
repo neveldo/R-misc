@@ -50,6 +50,8 @@ getClusters <- function(data, k)
   prevClusters <- clusters
   clusteringEnded <- FALSE
   
+  # Starting from random clusters, move each observation to the nearest cluster (with centroids)
+  # and continue until the clusters don't change anymore
   while (clusteringEnded == FALSE) {
     centroids <- getCentroids(data, clusters)
     
@@ -57,6 +59,7 @@ getClusters <- function(data, k)
       clusters[i] <- getNearestCluster(data, i, centroids)
     }
     
+    # all() could be used here
     clusteringEnded <- !(FALSE %in% (clusters == prevClusters))
     prevClusters <- clusters
   }
@@ -73,13 +76,17 @@ getClustersVariation <- function(data, clusters) {
   k <- max(clusters)
   ncols <- ncol(data)
   
+  # compute the sum of squared euclidean distances between each pairs of observations within
+  # all the clusters
+  # dist() could be used here
   for (cluster in 1:k) {
     clusterSubset <- data[clusters == cluster,]
-    rows <- as.numeric(rownames(clusterSubset))
+    nrows <- nrow(clusterSubset)
+    rownames(clusterSubset) <- 1:nrows
     clusterVariation <- 0
     
-    for (i in rows) {
-      for (i2 in rows) {
+    for (i in 2:nrows) {
+      for (i2 in 1:(i-1)) {
         for (j in 1:ncols) {
           clusterVariation <- variation + (data[i,j] - data[i2,j]) ^ 2
         }
@@ -102,6 +109,8 @@ kmeans <- function(data, k, nbExecutions = 8)
   variations <- rep(NA, nbExecutions)
   clustersTries <- vector("list", nbExecutions)
   
+  # Execute several times K-means algorithm and return the result that has
+  # the lowest within-cluster variation
   for (i in 1:nbExecutions) {
     clustersTries[[i]] <- getClusters(data, k)
     variations[i] <- getClustersVariation(data, clustersTries[[i]])
