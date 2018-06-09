@@ -1,4 +1,4 @@
-Here are some attemps of statistical learning algorithms implementation, just for learning purpose, and mainly inspired by the book "An Introduction to Statistical Learning".
+Here are some attempts of statistical learning algorithms implementation, just for learning purpose, and mainly inspired by the book "An Introduction to Statistical Learning".
 
 ## K-means clustering
 
@@ -8,4 +8,6 @@ Here are some attemps of statistical learning algorithms implementation, just fo
 
 ## Multiple linear regression
 
-![Linear regression](linearRegression/plot1.png)
+![Linear regression plot](linearRegression/plot1.png)
+
+![Linear regression indicators](linearRegression/code1.png)
