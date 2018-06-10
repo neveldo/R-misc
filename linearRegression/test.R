@@ -1,7 +1,7 @@
 library(tidyverse)
 source("linearRegression/linearRegression.R")
 
-# Test linear regression with fake dataset, only one predictor and a reponse
+# Test linear regression with a fake dataset taht contains only one predictor and a reponse
 # With an exponential shape
 
 x <- seq(from = 0, to = 10, by = 0.1)
