@@ -27,6 +27,7 @@ getCentroids <- function(data, clusters)
 #' each cluster centroids, and return the nearest centroid
 #' @param data data.frame The dataset
 #' @param rowNumber int The row number from the dataset from which compute the distances
+#' @param clusterCentroids A list of vectors for the centroids of the k clusters
 #' @return int The nearest cluster for the ith observation
 getNearestCluster <- function(data, rowNumber, clusterCentroids)
 {
