@@ -1,13 +1,15 @@
 #' Attempt of implementation of multiple linear regression
-#' @see https://economictheoryblog.com/2015/02/19/ols_estimator/
+#' @author Vincent Brouté
+
 #' Return a vector that contain the result intercept and coefficients for each predictor
+#' @see https://economictheoryblog.com/2015/02/19/ols_estimator/
 #' @param x A data.frame or matrix of n predictors
 #' @param y The response variable
 #' @return A vector of coefficients 
 linearRegression <- function(x, y)
 {
   x <- as.matrix(x)
-  y = as.matrix(y)
+  y <- as.matrix(y)
   x <- cbind(Intercept = rep(1, nrow(x)), x)
   
   solve(t(x) %*% x) %*% t(x) %*% y
@@ -64,6 +66,7 @@ linearRegression.indicators <- function(x, y, coefs)
   
   coefsTValue <- coefs / coefsStandardError
   
+  # The p-value follows a student t distribution
   coefsPValue <- 2 * pt(abs(coefsTValue), nrow(x) - 2, lower=FALSE)
   
   coefs <- cbind(coefsStandardError, as.vector(coefsTValue), as.vector(coefsPValue))
