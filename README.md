@@ -1,5 +1,16 @@
 Here are some attempts of statistical learning algorithms implementation, just for learning and understanding purpose, and mainly inspired by the book "An Introduction to Statistical Learning". It surely contains some mistakes, feel free to report them !
 
+## Decision Tree (Regression)
+
+Decision trees can be used for both regression and classification. Here is an implementation for regression that could further be extended to classification. Below is an example of decision tree built from a single predictor and a quantitative variable :
+
+Decision Tree :
+
+![Decision Tree](decisionTree/code1.png)
+
+Training data and predictions chart :
+![Training data and predictions](decisionTree/plot1.png)
+
 ## K-means clustering
 
 K-means is a clustering algorithm. That is, finding K homogeneous clusters of observations within the dataset. Here is a example of clustering performed on a dataset that contains two variables, with k = 3.
