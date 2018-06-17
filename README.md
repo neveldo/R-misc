@@ -3,7 +3,7 @@ Here are some attempts of statistical learning algorithms implementation, just f
 - [Decision Tree (Regression)](#decision-tree-regression)
 - [K-means clustering](#k-means-clustering)
 - [Multiple linear regression](#multiple-linear-regression)
-- [k-nearest-neighbors](#k-nearest neighbors)
+- [k-nearest neighbors](#k-nearest-neighbors)
 
 ## Decision Tree (Regression)
 
