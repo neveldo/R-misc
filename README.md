@@ -1,5 +1,10 @@
 Here are some attempts of statistical learning algorithms implementation, just for learning and understanding purpose, and mainly inspired by the book "An Introduction to Statistical Learning". It surely contains some mistakes, feel free to report them !
 
+[Decision Tree (Regression)](#decision-tree-regression)
+[K-means clustering](#k-means-clustering)
+[Multiple linear regression](#multiple-linear-regression)
+[k-nearest-neighbors](#k-nearest neighbors)
+
 ## Decision Tree (Regression)
 
 Decision trees can be used for both regression and classification. Here is an implementation for regression that could further be extended to classification. Below is an example of decision tree built from a single predictor and a quantitative variable :
