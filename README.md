@@ -13,7 +13,7 @@ Decision Tree :
 
 ![Decision Tree](decisionTree/code1.png)
 
-Training data and predictions chart :
+Training data and model fit chart :
 ![Training data and predictions](decisionTree/plot1.png)
 
 ## K-means clustering
