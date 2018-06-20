@@ -67,11 +67,12 @@ isTerminalNode <- function(node)
 #' last one is assumed to be the quantitative response variable
 #' @param int maxDepth The max depth until stopping to grow the tree
 #' @param int minNodeRecords The minimum number of records allowed in a node until stopping to grow the tree
+#' @param int m number of candidate predictors to consider at each split. For instance (for instance : qrt(nbPredictors))
 #' 
 #' @todo Implement tree pruning
 #' @todo Extend decision tree for categorical response (with GINI index ?)
 #' @todo Allow categorical predictor variables
-decisionTree <- function(data, maxDepth = 10, minNodeRecords = 3)
+decisionTree <- function(data, maxDepth = 10, minNodeRecords = 3, m = -1)
 {
   maxDepthReached <- F
   minNodeRecordsReached <- F
@@ -101,8 +102,13 @@ decisionTree <- function(data, maxDepth = 10, minNodeRecords = 3)
         }
       }
       
+      predictors <- colnames(data)[-length(colnames(data))]
+      if (m > 0) {
+        predictors <- sample(predictors, m)
+      }
+      
       # Try to split the data into two parts for each value of the data from the current terminal node checked
-      for (j in colnames(data)[-length(colnames(data))]) {
+      for (j in predictors) {
         for (i in rownames(tree[[nodeIndex]]$data)) {
           # Get the two candidate regions of data to check
           regionsToEvaluate <- getRegions(tree[[nodeIndex]]$data, i, j)
@@ -145,7 +151,7 @@ decisionTree <- function(data, maxDepth = 10, minNodeRecords = 3)
   # Into each terminal node
   for (nodeIndex in 1:length(tree)) {
     if (isTerminalNode(tree[[nodeIndex]])) {
-      tree[[nodeIndex]]$prediction <- mean(tree[[nodeIndex]]$data[,'y'])
+      tree[[nodeIndex]]$prediction <- mean(tree[[nodeIndex]]$data[,ncol(data)])
     }
   tree[[nodeIndex]]$data <- NULL
   }
@@ -187,7 +193,7 @@ printTree <- function(tree, node = 1, level = 0)
 
 #' Predict a response for the tree and a data.frame of observations
 #' @param list tree to use for prediction, built with decisionTree()
-#' @param observations The observations to use for prediction
+#' @param data.frame observations The observations to use for prediction
 predictFromTree <- function(tree, observations)
 {
   predictions <- data.frame(y = rep(NA, nrow(observations)))
@@ -196,7 +202,6 @@ predictFromTree <- function(tree, observations)
   for (row in rownames(observations)) {
   
     observation <- observations[row,, drop = F]
-    
     prediction <- NA
     nodeToCheck <- 1
     
