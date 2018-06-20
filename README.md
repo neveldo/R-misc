@@ -1,7 +1,7 @@
 Here are some attempts of statistical learning algorithms implementation, just for learning and understanding purpose, and mainly inspired by the book "An Introduction to Statistical Learning". It surely contains some mistakes, feel free to report them !
 
 - [Decision Tree (Regression)](#decision-tree-regression)
-- [Random Forest (Regression)](#random-forest)
+- [Random Forest (Regression)](#random-forest-regression)
 - [K-means clustering](#k-means-clustering)
 - [Multiple linear regression](#multiple-linear-regression)
 - [k-nearest neighbors](#k-nearest-neighbors)
