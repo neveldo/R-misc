@@ -1,6 +1,7 @@
 Here are some attempts of statistical learning algorithms implementation, just for learning and understanding purpose, and mainly inspired by the book "An Introduction to Statistical Learning". It surely contains some mistakes, feel free to report them !
 
 - [Decision Tree (Regression)](#decision-tree-regression)
+- [Random Forest (Regression)](#random-forest)
 - [K-means clustering](#k-means-clustering)
 - [Multiple linear regression](#multiple-linear-regression)
 - [k-nearest neighbors](#k-nearest-neighbors)
@@ -15,6 +16,12 @@ Decision Tree :
 
 Training data and model fit chart :
 ![Training data and predictions](decisionTree/plot1.png)
+
+## Random Forest (Regression)
+
+The Random Forest algorithm is built on top of the Decision Tree algorithm above. In short, Random Forest algorithm generates n trees built on bootstrap samples from the original training dataset. At each split, only m random candidate predictors are considered (instead of all). A prediction from a Random Forest for a given observation is the mean of all predictions from the individual trees.
+
+![Random Forest example](randomForest/code1.png)
 
 ## K-means clustering
 
